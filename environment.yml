@@ -1,0 +1,14 @@
+name: ird_tls
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - scipy
+  - laspy
+  - lazrs
+  - open3d
+  - hdbscan
+  - pip
+

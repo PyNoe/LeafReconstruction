@@ -1,0 +1,23 @@
+# Environnements Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Sorties de calcul lourdes
+outputs/
+runs/
+*.laz
+*.las
+*.ply
+*.pcd
+*.obj
+
+# Donnees locales
+data/
+*.txt
+
+# Notebooks / systeme
+.ipynb_checkpoints/
+.DS_Store
+

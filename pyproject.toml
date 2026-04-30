@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tls-leaf-surface-pipeline"
+version = "0.1.0"
+description = "Pipeline TLS pour clustering de feuilles et reconstruction de surfaces."
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "laspy",
+    "lazrs",
+    "open3d",
+    "hdbscan",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
