@@ -22,13 +22,9 @@ pip install -e .
 
 Dependances principales :
 
-- `numpy`
-- `pandas`
-- `laspy`
-- `lazrs`
-- `open3d`
-- `hdbscan`
-- `scipy`
+```
+numpy, pandas, laspy, lazrs, open3d, hdbscan, scipy
+```
 
 ## Utilisation
 
