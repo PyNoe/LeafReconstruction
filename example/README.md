@@ -17,16 +17,16 @@ Le script appelle :
 python scripts/run_pipeline.py --config example/example.toml --step all
 ```
 
-Le mode `all` lance automatiquement les deux etapes dans deux processus Python
-separes : un processus pour `cluster`, puis un second pour `mesh`.
+Le mode `all` lance automatiquement les deux étapes dans deux processus Python
+séparés : un processus pour `cluster`, puis un second pour `mesh`.
 
-Si l'on veut lancer explicitement les deux etapes sans passer par `all` :
+Si l'on veut lancer explicitement les deux étapes sans passer par `all` :
 
 ```bash
 bash example/run_pipeline_two_steps.sh
 ```
 
-Les sorties sont ecrites dans :
+Les sorties sont écrites dans :
 
 ```text
 example/outputs/clustering/run_XX/
@@ -66,10 +66,8 @@ Voila ce que j'obtiens :
 
 
 
-
-
 Les fichiers les plus utiles pour illustrer la pipeline sont :
 
 - `sor_tiled_hdbscan_colored.las` apres le clustering ;
 - `global_clusters_smooth_edge_recon_colored.ply` apres le meshing ;
-- les deux fichiers `summary.json` pour les statistiques de chaque etape.
+- les deux fichiers `summary.json` pour les statistiques de chaque étape.
