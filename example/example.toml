@@ -1,0 +1,56 @@
+[paths]
+# Exemple que j'ai mis dans le depot.
+input_las = "example/box_0_5.laz"
+
+# LAS/LAZ clusterise contenant le champ cluster_id.
+# Utilise si l'on lance uniquement l'etape mesh.
+# Avec step=all, le fichier produit par cluster est transmis automatiquement a mesh.
+clustered_las = "example/outputs/clustering/run_01/sor_tiled_hdbscan.las"
+
+output_root = "example/outputs"
+
+[clustering]
+enable_sor = true
+sor_nb_neighbors = 30
+sor_std_ratio = 1.0
+
+enable_tiling = true
+tile_size_xyz_m = [0.5, 0.5, 0.5]
+min_points_per_tile = 120
+
+hdbscan_min_cluster_size = 300
+hdbscan_min_samples = 5
+hdbscan_cluster_selection_epsilon = 0.0
+hdbscan_cluster_selection_method = "eom"
+
+export_colored_las = true
+
+[meshing]
+cluster_field = "cluster_id"
+noise_label = -1
+min_points_cluster = 150
+start_cluster_id = 0
+end_cluster_id = 10000000
+
+poisson_depth = 6
+normal_radius = 0.02
+normal_max_nn = 100
+orient_k = 10
+
+max_dist_factor = 2.0
+fill_poisson_holes = true
+max_hole_area_cm2 = 15.0
+
+subdiv_iter = 2
+laplacian_iter = 100
+taubin_iter = 40
+taubin_lambda = 0.5
+taubin_mu = -0.55
+
+fill_after_smooth = true
+max_hole_area_after_smooth_cm2 = 15.0
+
+voxel_size_per_cluster = 0.005
+max_points_per_cluster = 30000
+export_per_cluster_meshes = true
+export_per_cluster_poisson_raw = false

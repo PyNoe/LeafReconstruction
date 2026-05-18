@@ -8,7 +8,7 @@ Contient les fichiers de configuration. Le fichier `default.toml` centralise les
 
 `scripts/`
 
-Contient les points d'entree executables. Pour l'instant, `run_pipeline.py` permet de lancer uniquement le clustering, uniquement le meshing, ou toute la pipeline.
+Contient les points d'entree executables. Pour l'instant, `run_pipeline.py` permet de lancer uniquement le clustering, uniquement le meshing, ou les deux etapes successivement via deux processus separes.
 
 `scripts/tools/`
 

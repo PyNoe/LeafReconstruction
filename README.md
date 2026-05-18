@@ -6,7 +6,7 @@ L'objectif est de garder une structure simple :
 
 - `cluster` : filtrage SOR puis clustering HDBSCAN par tuiles.
 - `mesh` : reconstruction de surface par cluster avec Poisson d6, lissage Laplacien + Taubin, puis reconstruction des bords.
-- `all` : enchaine `cluster` puis `mesh`.
+- `all` : lance `cluster`, puis `mesh`, dans deux processus Python separes.
 
 Les scripts historiques d'exploration ne sont pas inclus dans cette couche propre. Ils restent utiles pour reproduire les essais, mais ce dossier est pense comme base de repo GitHub pour la suite.
 
@@ -15,7 +15,7 @@ Les scripts historiques d'exploration ne sont pas inclus dans cette couche propr
 Environnement conseille :
 
 ```bash
-conda create -n ird_tls python=3.11
+conda env create -f environment.yml
 conda activate ird_tls
 pip install -e .
 ```
@@ -41,6 +41,32 @@ python scripts/run_pipeline.py --config configs/default.toml --step cluster
 python scripts/run_pipeline.py --config configs/default.toml --step mesh
 python scripts/run_pipeline.py --config configs/default.toml --step all
 ```
+
+Le mode `all` orchestre les deux etapes de bout en bout, mais les lance dans
+deux processus Python differents. L'etape `mesh` relit alors automatiquement la
+sortie produite par l'etape `cluster`.
+
+### Si le meshing s'interrompt
+
+Sur certaines executions, le meshing peut s'arreter brutalement pendant la
+reconstruction des clusters, sans exception Python lisible ni fichier final.
+Le probleme semble venir d'un crash natif intermittent dans les dependances de
+reconstruction de surface, plutot que de la logique Python de la pipeline.
+
+Le mode `all` limite ce risque en lancant `cluster` et `mesh` dans deux processus
+separes, puis en relancant automatiquement le meshing si les sorties finales
+attendues ne sont pas produites.
+
+Si l'on veut contourner completement ce mode automatise, il reste possible de
+lancer les deux etapes manuellement :
+
+```bash
+python scripts/run_pipeline.py --config configs/default.toml --step cluster
+python scripts/run_pipeline.py --config configs/default.toml --step mesh
+```
+
+Dans ce cas, `paths.clustered_las` doit pointer vers le LAS clusterise produit
+par l'etape `cluster`.
 
 ## Scripts utilitaires mobiles
 

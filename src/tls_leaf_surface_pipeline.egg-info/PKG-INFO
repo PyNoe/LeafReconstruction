@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: tls-leaf-surface-pipeline
+Version: 0.1.0
+Summary: Pipeline TLS pour clustering de feuilles et reconstruction de surfaces.
+Requires-Python: >=3.11
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: laspy
+Requires-Dist: lazrs
+Requires-Dist: open3d
+Requires-Dist: hdbscan
